@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: mypod2
+spec:
+  containers:
+  - name: mypod2
+    image: busybox 
+    args:
+    - /bin/sh
+    - -c 
+    - sleep 30000 
+    volumeMounts:
+    - mountPath: "/mydata"
+      name: mydata 
+  volumes:
+  - name: mydata 
+    persistentVolumeClaim:
+      claimName: mysql-pvc 
